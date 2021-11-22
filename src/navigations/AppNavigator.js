@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DeviceList from "../screens/DeviceList";
 import AddDevices from "../screens/AddDevices";
 import EditDelete from "../screens/EditDelete";
+import Settings from "../screens/Settings";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const AppNavigator = () => {
 			<Stack.Screen name="DeviceList" component={DeviceList} />
 			<Stack.Screen name="AddDevices" component={AddDevices} />
 			<Stack.Screen name="EditDelete" component={EditDelete} />
+			<Stack.Screen name="Settings" component={Settings} />
 		</Stack.Navigator>
 	);
 };

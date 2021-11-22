@@ -9,7 +9,7 @@ import Button from "../components/ui-elements/Button";
 import { theme } from "../utils";
 import * as actions from "../redux/actions";
 
-const AddDevices = () => {
+const AddDevices = (props) => {
 	const dispatch = useDispatch();
 	const { navigate } = useNavigation();
 	//: states
@@ -37,6 +37,7 @@ const AddDevices = () => {
 			},
 		};
 		dispatch(actions.addDeviceList(obj));
+		props.navigation.goBack();
 	};
 
 	return (

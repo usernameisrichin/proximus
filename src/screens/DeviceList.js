@@ -14,29 +14,12 @@ import DeviceCard from "../components/DeviceCard";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
-const deviceList = [
-	{
-		id: 1,
-		model: "Samsung",
-		OS: "Android",
-		currentOwner: "Admin",
-		notes: "test admin",
-	},
-	{
-		id: 2,
-		model: "iPhone",
-		OS: "iOS",
-		currentOwner: "Tester",
-		notes: "testing",
-	},
-];
-
 const DeviceList = () => {
 	const { navigate } = useNavigation();
 
 	//: selectors for components
-	const { deviceList } = useSelector((state) => state.app);
-	console.log({ deviceList });
+	const { deviceList = [] } = useSelector((state) => state.app);
+	console.log(deviceList);
 	//empty component
 	const _ListEmptyComponent = (
 		<View
@@ -47,7 +30,7 @@ const DeviceList = () => {
 				justifyContent: "center",
 			}}
 		>
-			{!deviceList ? (
+			{deviceList?.data?.length > 0 ? (
 				<View>
 					<ActivityIndicator />
 				</View>
@@ -76,11 +59,11 @@ const DeviceList = () => {
 					renderItem={({ item, index }) => (
 						<DeviceCard
 							id={item.id}
-							model={item.model}
+							model={item?.data?.model}
 							onPress={() => navigate("EditDelete", { item })}
-							OS={item.OS}
-							currentOwner={item.currentOwner}
-							notes={item?.notes}
+							OS={item?.data?.OS}
+							currentOwner={item?.data?.currentOwner}
+							notes={item?.data?.notes}
 						/>
 					)}
 				/>

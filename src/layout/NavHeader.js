@@ -77,7 +77,7 @@ const NavHeader = ({
 				</View>
 			</TouchableOpacity>
 		) : (
-			<TouchableOpacity>
+			<TouchableOpacity onPress={() => navigation.navigate("Settings")}>
 				<View
 					style={{
 						paddingHorizontal: 10,
