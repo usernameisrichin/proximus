@@ -64,10 +64,12 @@ const appReducer = (state = init_state, action) => {
 			};
 		}
 		// dark/light mode
-		case types.DARK_THEME:
+		case types.DARK_THEME: {
 			return { theme: true };
-		case types.LIGHT_THEME:
+		}
+		case types.LIGHT_THEME: {
 			return { theme: false };
+		}
 	}
 	return state;
 };

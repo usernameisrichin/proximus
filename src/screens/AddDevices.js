@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 import uuid from "react-native-uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
@@ -26,18 +26,30 @@ const AddDevices = (props) => {
 
 	// :functions
 	const onSubmit = () => {
-		let obj = {
-			id: uuid.v4(),
-			data: {
+		if (!model || !os || !owner || !notes) {
+			Alert.alert(
+				"Error!",
+				`These fields are mandatory: ${model === null ? "Model," : ""}${
+					os === null ? "OS, " : ""
+				}${owner === null ? "Current Owner, " : ""}${
+					notes === "" ? "Notes," : ""
+				}.`
+			);
+			return null;
+		} else {
+			let obj = {
 				id: uuid.v4(),
-				model: model,
-				OS: os,
-				currentOwner: owner,
-				notes: notes,
-			},
-		};
-		dispatch(actions.addDeviceList(obj));
-		props.navigation.goBack();
+				data: {
+					id: uuid.v4(),
+					model: model,
+					OS: os,
+					currentOwner: owner,
+					notes: notes,
+				},
+			};
+			dispatch(actions.addDeviceList(obj));
+			props.navigation.goBack();
+		}
 	};
 
 	return (

@@ -58,7 +58,7 @@ export default CommonContainer;
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "grey",
+		backgroundColor: theme.colors.primary,
 		flex: 1,
 	},
 	bgPattern: { position: "absolute", top: 15, left: 15, flex: 0 },
