@@ -19,7 +19,6 @@ const DeviceList = () => {
 
 	//: selectors for components
 	const { deviceList = [] } = useSelector((state) => state.app);
-	console.log(deviceList);
 	//empty component
 	const _ListEmptyComponent = (
 		<View

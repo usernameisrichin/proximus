@@ -18,16 +18,19 @@ import AppNavigator from "./src/navigations/AppNavigator";
 
 export default function App() {
 	const colorScheme = store.getState();
+	console.log(colorScheme?.app?.theme, colorScheme);
 	return (
 		<View style={styles.container}>
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
 					<NavigationContainer
 						ref={navigationRef}
-						theme={colorScheme?.theme ? DarkTheme : DefaultTheme}
+						theme={colorScheme?.app?.theme ? DarkTheme : DefaultTheme}
 					>
 						<PaperProvider
-							theme={colorScheme?.theme ? PaperDarkTheme : PaperDefaultTheme}
+							theme={
+								colorScheme?.app?.theme ? PaperDarkTheme : PaperDefaultTheme
+							}
 						>
 							<AppNavigator />
 						</PaperProvider>

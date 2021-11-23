@@ -12,7 +12,6 @@ export default ({ navigation }) => {
 		<CommonContainer scrollEnabled={false} style={{ paddingTop: 15, flex: 1 }}>
 			<List.Item
 				title="Dark Mode"
-				left={() => <List.Icon icon="brightness-4" />}
 				right={() => (
 					<Switch
 						value={theme}
